@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebLocadora.Models.Filme>
+@{
+    ViewBag.Title = "Filme";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="display-4">Consultar Filmes</h2>
+    </div>
+</div>
+<div class="row mt-4 mb-4">
+    <div class="col">
+        <a class="btn btn-primary" asp-area="Painel" asp-controller="Filme" asp-action="Novo"><i class="fas fa-plus-circle"></i> Novo</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>                    
+                    <th scope="col">Titulo</th>
+                    <th scope="col">ClassificacaoIndicativa</th>
+                    <th scope="col">Lancamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        
+                        <td>@item.Titulo</td>
+                        <td>@item.ClassificacaoIndicativa</td>
+                        <td>@item.Lancamento</td>
+                        <th>
+                            <a class="btn btn-info btn-sm" asp-area="" asp-controller="Filme" asp-action="Editar" asp-route-id="@item.Id"><i class="fas fa-pen-alt">Editar</i></a>
+                            <a class="btn btn-danger btn-sm" asp-area="" asp-controller="Filme" asp-action="Excluir" asp-route-id="@item.Id"><i class="fas fa-trash-alt">Excluir</i></a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

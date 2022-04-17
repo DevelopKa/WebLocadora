@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebLocadora.Models.Locacao>
+@{
+    ViewBag.Title = "Locacao";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="display-4">Consultar Locacao</h2>
+    </div>
+</div>
+<div class="row mt-4 mb-4">
+    <div class="col">
+        <a class="btn btn-primary" asp-area="Painel" asp-controller="Locacao" asp-action="Novo"><i class="fas fa-plus-circle"></i> Novo</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Filme</th>
+                    <th scope="col">Data Locacao</th>                    
+                    <th scope="col">Data Devolucao</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>                        
+                        <td>@item.Id</td>
+                        <td>@item.IdCliente</td>
+                        <td>@item.IdFilme</td>
+                        <td>@item.DataLocacao</td>
+                        <td>@item.DataDevolucao</td>
+                        <th> 
+                            <a class="btn btn-info" asp-area="" asp-controller="Locacao" asp-action="Editar" asp-route-id="@item.Id"><i class="fas fa-pen-alt">Editar</i></a>
+                            <a class="btn btn-danger" asp-area="" asp-controller="Locacao" asp-action="Excluir" asp-route-id="@item.Id"><i class="fas fa-trash-alt">Excluir</i></a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
